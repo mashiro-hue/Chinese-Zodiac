@@ -83,4 +83,3 @@ Prediction: A year of abundance and prosperity. Focus on gratitude, and good for
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
