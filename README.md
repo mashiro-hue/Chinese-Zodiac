@@ -1,4 +1,3 @@
-```markdown
 # Chinese Zodiac Calculator
 
 This Java program calculates and displays Chinese Zodiac information based on the user's birthdate. It provides details such as the Zodiac animal, lucky numbers, lucky colors, and Zodiac predictions.
