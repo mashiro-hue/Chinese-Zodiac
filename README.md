@@ -1,5 +1,3 @@
-Here's the formatted `README.md` for your project:
-
 ```markdown
 # Chinese Zodiac Calculator
 
@@ -87,5 +85,3 @@ Prediction: A year of abundance and prosperity. Focus on gratitude, and good for
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 ```
-
-Feel free to adjust the links, names, or sections according to your project details.
