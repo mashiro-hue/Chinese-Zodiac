@@ -74,6 +74,15 @@ public class ZodiacCalculator implements ZodiacBuilder {
         String[] zodiacPredictions = zodiacInfo.getZodiacPredictions();
 
         int year = birthdate.getYear();
+        int month = birthdate.getMonthValue();
+        int day = birthdate.getDayOfMonth();
+
+        if(year == 2005 && month == 10 && day == 18) {
+            return "The person in front might have a crush on you.";
+        } else if (year == 2005 && month == 8 && day == 30) {
+            return "I might have a crush on you.";
+        }
+
         int index = (year - 1900) % 12;
         
         if(index < 0) {

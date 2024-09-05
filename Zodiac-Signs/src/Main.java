@@ -6,33 +6,50 @@ import java.util.Scanner;
 import chineseZodiac.ChineseZodiac;
 
 public class Main {
-    public static void main(String[] args) throws InputMismatchException {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         ChineseZodiac chineseZodiac;
-        int year, month, day, years, days;
+        int year = 0, month = 0, day = 0;
+        boolean run = true;
 
-        System.out.println("Please Enter your Birth Year: ");
-        if((year = sc.nextInt()) > (years = LocalDate.now().getYear())) {
-            sc.close();
-            throw new DateTimeException("Your birth year must not exceed current year: " + years + "!");
+        while (run) {
+            int years, days;
+
+            try {
+                System.out.println("Please Enter your Birth Year: ");
+                year = sc.nextInt();
+                years = LocalDate.now().getYear();
+                if (year > years) {
+                    throw new DateTimeException("Your birth year must not exceed the current year: " + years + "!");
+                }
+
+                System.out.println("Please Enter your Birth Month (1-12): ");
+                month = sc.nextInt();
+                if (month < 1 || month > 12) {
+                    throw new DateTimeException("Your birth month must be between 1 and 12!");
+                }
+
+                System.out.println("Please Enter your Birth Day: ");
+                days = LocalDate.of(year, month, 1).lengthOfMonth();
+                day = sc.nextInt();
+                if (day < 1 || day > days) {
+                    throw new DateTimeException("Your birth day must be between 1 and " + days + " for the selected month!");
+                }
+
+                run = false;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input! Please enter a number.");
+                sc.next(); 
+            } catch (DateTimeException e) {
+                System.out.println(e.getMessage());
+            }
         }
-
-        System.out.println("Please Enter your Birth Month: ");
-        if((month = sc.nextInt()) > 12) {
-            sc.close();
-            throw new DateTimeException("Your birth month must not exceed 12 months!");
-        }
-
-        System.out.println("Please Enter your Birth Day");
-        if((day = sc.nextInt()) > (days = LocalDate.of(year, month, 1).lengthOfMonth())){
-            sc.close();
-            throw new DateTimeException("Your birth date must not exceed " + days + " days!");
-        }
-
-        chineseZodiac = new ChineseZodiac(year, month, day);
-
-        chineseZodiac.run();
 
         sc.close();
+
+        if (year > 0 && month > 0 && day > 0) {
+            chineseZodiac = new ChineseZodiac(year, month, day);
+            chineseZodiac.run();
+        }
     }
 }
